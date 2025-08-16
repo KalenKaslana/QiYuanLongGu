@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>漆园龙鼓宣传预览页</title>
+<style>
+    html{margin:0;padding:0;}
+    body{margin:0;padding:0;background-color:blanchedalmond;}
+    /* 内容容器样式 */
+    .content-container {
+        display: flex;
+        width: 100%;
+        min-height: calc(100vh - 120px);
+    }
+    
+    /* 左侧目录样式 */
+    .sidebar {
+        width: 25%;
+        background-color: #f0e6d6;
+        padding: 20px;
+        box-sizing: border-box;
+        border-right: 2px solid #cc9966;
+    }
+    
+    .sidebar-title {
+        color: #993300;
+        text-align: center;
+        border-bottom: 2px solid #cc9966;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+    }
+    
+    .sidebar-menu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .sidebar-menu li {
+        margin-bottom: 10px;
+    }
+    
+    .sidebar-menu a {
+        display: block;
+        padding: 12px 15px;
+        background-color: #ffffff;
+        color: #993300;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        border-left: 4px solid transparent;
+    }
+    
+    .sidebar-menu a:hover, .sidebar-menu a.active {
+        background-color: #993300;
+        color: #ffffff;
+        transform: translateX(5px);
+        border-left: 4px solid gold;
+    }
+    
+    /* 右侧内容区域样式 */
+    .content-area {
+        width: 75%;
+        padding: 30px;
+        box-sizing: border-box;
+        /* 内容靠上，不居中 */
+    }
+    
+    .content-section {
+        display: none;
+        animation: fadeIn 0.5s ease;
+        /* 确保链接容器占满父区域 */
+        width: 100%;
+    }
+    
+    .content-section.active {
+        display: block;
+    }
+    
+    .content-title {
+        color: #993300;
+        border-bottom: 2px solid #cc9966;
+        padding-bottom: 10px;
+        margin-top: 0;
+    }
+    
+    .content-text {
+        line-height: 1.8;
+        font-size: 1.05rem;
+    }
+    /* 解决pre标签文字溢出问题：保留格式+自动换行 */
+    .content-text pre {
+        white-space: pre-wrap; 
+        word-break: break-all;
+        margin: 0;
+        padding: 0;
+        font-family: inherit; 
+        font-size: inherit;
+        line-height: inherit;
+    }
+    /* 图片居中样式：水平居中+自适应宽度+间距优化 */
+    .content-image {
+        display: block;
+        margin: 0 auto;
+        max-width: 50%;
+        height: auto;
+        margin-bottom: 20px;
+        margin-top: 10px;
+    }
+
+    /* 下载链接样式（与teaching.html保持一致） */
+    .content-section a {
+        font-size: 2rem;
+        font-weight: bold;
+        display: block;
+        text-align: center;
+        margin: 50px auto;
+        text-decoration: none;
+        color: #993300;
+        transition: all 0.3s ease;
+        padding: 15px 30px;
+        border-radius: 8px;
+        background-color: rgba(255,255,255,0.8);
+        max-width: 600px;
+    }
+
+    /* 链接悬停状态 */
+    .content-section a:hover {
+        color: gold;
+        transform: scale(1.1);
+        text-shadow: 0 0 12px rgba(153, 51, 0, 0.6);
+        background-color: rgba(255,255,255,1);
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* 响应式调整 */
+    @media (max-width: 768px) {
+        .content-container {
+            flex-direction: column;
+        }
+        
+        .sidebar, .content-area {
+            width: 100%;
+        }
+        
+        .sidebar {
+            border-right: none;
+            border-bottom: 2px solid #cc9966;
+        }
+
+        /* 小屏幕下链接文字缩小，避免溢出 */
+        .content-section a {
+            font-size: 1.5rem;
+            padding: 12px 20px;
+        }
+
+        /* 头部导航适配小屏幕 */
+        #header .content-section a {
+            font-size: 1.2rem;
+            padding: 0.3rem 0.5rem;
+        }
+
+        #header h1 {
+            font-size: 1.8rem;
+        }
+    }
+</style>
+</head>
+
+
+<body style="margin: 0; padding: 0; min-height: 100vh; display: flex; flex-direction: column;">
+<!--头部方形栏-->
+<div id="header" style="
+    width: 100%;
+    background-color:red;
+    margin: 0;
+    padding: 1rem 0;
+    position: relative;
+    overflow: hidden;
+">
+    <!--LOGO图片-->
+    <div style="
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+        width: 320px;
+        height: 320px;
+        opacity: 1; 
+    ">
+        <img src="/QiYuanLongGu/文创设计/冰箱贴/图案-龙（透明）.png" alt="图案-龙" width="120px" style="
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        ">
+    </div>
+
+    <!--导航栏框架-->
+    <div style="
+        position: relative;
+        z-index: 2;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 90%;
+        margin: 0 auto;
+        padding: 0 2rem;
+    ">
+    <a href="/QiYuanLongGu/source/inherit/inherit.html" style="
+        color: gold;
+        text-decoration: none;
+        font-size: 1.5rem;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        padding: 0.5rem 1rem;
+        " 
+        onmouseover="this.style.transform='scale(1.3)'; this.style.textShadow='0 0 10px gold'" onmouseout="this.style.transform='scale(1)'; this.style.textShadow='none'"
+    >传承渊源
+    </a>
+
+    <a href="/QiYuanLongGu/source/teaching/teaching.html" style="
+        color: gold;
+        text-decoration: none;
+        font-size: 1.5rem;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        padding: 0.5rem 1rem;
+        " 
+        onmouseover="this.style.transform='scale(1.3)'; this.style.textShadow='0 0 10px gold'" onmouseout="this.style.transform='scale(1)'; this.style.textShadow='none'"
+    >龙鼓舞乐
+    </a>
+    
+    <!--中央标题-->
+    <a href="/QiYuanLongGu/index.html" style="text-decoration: none;">
+        <h1 style="
+            text-align: center;
+            margin: 0;
+            padding: 0 1rem;
+            color: gold;
+            font-size: 2.2rem;
+            min-width: 250px;
+            transition: all 0.3s ease;
+        " onmouseover="this.style.transform='scale(1.1)'; this.style.textShadow='0 0 10px gold'" onmouseout="this.style.transform='scale(1)'; this.style.textShadow='none'">
+            <i>百年龙鼓<br>漆园流芳</i>
+        </h1>
+    </a>
+
+    <a href="#" style="
+        color: gold;
+        text-decoration: none;
+        font-size: 1.5rem;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        padding: 0.5rem 1rem;
+        "
+        onmouseover="this.style.transform='scale(1.3)'; this.style.textShadow='0 0 10px gold'" onmouseout="this.style.transform='scale(1)'; this.style.textShadow='none'"
+    >文创周边
+    </a>
+
+    <a href="#" style="
+        color: gold;
+        text-decoration: none;
+        font-size: 1.5rem;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        padding: 0.5rem 1rem;
+        " 
+        onmouseover="this.style.transform='scale(1.3)'; this.style.textShadow='0 0 10px gold'" onmouseout="this.style.transform='scale(1)'; this.style.textShadow='none'"
+    >更多信息
+    </a>
+    </div>
+</div>
+
+<!-- 内容区域 -->
+<div class="content-container">
+    <!-- 左侧目录菜单 -->
+    <div class="sidebar">
+        <h2 class="sidebar-title">目录</h2>
+        <ul class="sidebar-menu">
+            <li><a href="#refrigerator" class="menu-link active" data-target="refrigerator-section">冰箱贴</a></li>
+            <li><a href="#dragon-drum-model" class="menu-link" data-target="dragon-drum-model-section">龙鼓模型</a></li>
+        </ul>
+    </div>
+    
+    <!-- 右侧内容区域 -->
+    <div class="content-area">
+        <!-- 冰箱贴 -->
+        <div id="refrigerator-section" class="content-section active">
+            <h2 class="content-title">冰箱贴</h2>
+            <img src="/QiYuanLongGu/source/design/亚克力冰箱贴.png" alt="亚克力冰箱贴" class="content-image">
+            <div class="content-text">
+            </div>
+        </div>
+        
+        <!-- 龙鼓模型 -->
+        <div id="dragon-drum-model-section" class="content-section">
+            <h2 class="content-title">龙鼓模型</h2>
+            <a href="/QiYuanLongGu/source/design/龙鼓2（改）.SLDPRT" download>下载龙鼓模型文件</a>
+            <div class="content-text">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 实现目录切换功能 - 优化稳定性
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuLinks = document.querySelectorAll('.menu-link');
+        const contentSections = document.querySelectorAll('.content-section');
+        
+        // 初始化检查：确保仅第一个区域激活
+        menuLinks.forEach(link => link.classList.remove('active'));
+        contentSections.forEach(section => section.classList.remove('active'));
+        document.querySelector('.menu-link[data-target="refrigerator-section"]').classList.add('active');
+        document.getElementById('refrigerator-section').classList.add('active');
+        
+        // 目录点击切换
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // 移除所有活动状态
+                menuLinks.forEach(l => l.classList.remove('active'));
+                contentSections.forEach(s => s.classList.remove('active'));
+                
+                // 添加当前活动状态
+                this.classList.add('active');
+                const targetId = this.getAttribute('data-target');
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) targetSection.classList.add('active');
+            });
+        });
+    });
+</script>
+<!-- 独立底部版权栏（可在多个页面复用） -->
+<div id="copyright-bar" style="
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 1rem;
+    margin-top: auto; /* 关键：无论内容多少，始终固定在页面底部 */
+">
+    <p style="margin: 0;">© 2025 北京化工大学机电工程学院 版权所有 | 鼓韵新生项目组</p>
+    <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem;">联系电话：13520787218 | 邮箱：1978923915@qq.com</p>
+</div>
+</body>
+</html>
