@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>漆园龙鼓宣传预览页</title>
+<style>
+    html{margin:0;padding:0;}
+    body{margin:0;padding:0;background-color:blanchedalmond;}
+    p{color:black;}
+</style>
+</head>
+
+
+<body>
+<!--头部方形栏-->
+<div id="header" style="
+    width: 100%;
+    background-color:red;
+    margin: 0;
+    padding: 1rem 0;
+    position: relative;
+    overflow: hidden;
+">
+    <!--LOGO图片-->
+    <div style="
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+        width: 320px;
+        height: 320px;
+        opacity: 1; 
+    ">
+        <img src="E:/CodeMake/HTML/图案-龙（透明）.png" alt="图案-龙" width="120" style="
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        ">
+    </div>
+
+    <!--导航栏框架-->
+    <div style="
+        position: relative;
+        z-index: 2;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 90%;
+        margin: 0 auto;
+        padding: 0 2rem;
+    ">
+    <a href="#" style="
+        color: gold;
+        text-decoration: none;
+        font-size: 1.5rem;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        padding: 0.5rem 1rem;
+        " 
+        onmouseover="this.style.transform='scale(1.3)'; this.style.textShadow='0 0 10px gold'" onmouseout="this.style.transform='scale(1)'; this.style.textShadow='none'"
+    >传承渊源
+    </a>
+
+    <a href="#" style="
+        color: gold;
+        text-decoration: none;
+        font-size: 1.5rem;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        padding: 0.5rem 1rem;
+        " 
+        onmouseover="this.style.transform='scale(1.3)'; this.style.textShadow='0 0 10px gold'" onmouseout="this.style.transform='scale(1)'; this.style.textShadow='none'"
+    >龙鼓舞乐
+    </a>
+    
+    <!--中央标题文字-->
+    <h1 style="
+        text-align: center;
+        margin: 0;
+        padding: 0 1rem;
+        color: gold;
+        font-size: 2.5rem;
+        min-width: 250px;
+    ">
+        <i>百年龙鼓<br>漆园流芳</i>
+    </h1>
+
+    <a href="#" style="
+        color: gold;
+        text-decoration: none;
+        font-size: 1.5rem;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        padding: 0.5rem 1rem;
+        "
+        onmouseover="this.style.transform='scale(1.3)'; this.style.textShadow='0 0 10px gold'" onmouseout="this.style.transform='scale(1)'; this.style.textShadow='none'"
+    >文创周边
+    </a>
+
+    <a href="#" style="
+        color: gold;
+        text-decoration: none;
+        font-size: 1.5rem;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        padding: 0.5rem 1rem;
+        " 
+        onmouseover="this.style.transform='scale(1.1)'; this.style.textShadow='0 0 10px gold'" onmouseout="this.style.transform='scale(1)'; this.style.textShadow='none'"
+    >更多信息
+    </a>
+    </div>
+</div>
+
+<!--图片展示页-->
+<div id="image-slider" style="
+    width: 100vw;
+    height: calc(100vh - 88px);
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+">
+    <!-- 图片容器（所有图片横向排列） -->
+    <div id="slider-container" style="
+        display: flex;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.5s ease; /* 平滑过渡效果 */
+    ">
+        <!-- 图片1 -->
+        <div class="slide" style="min-width: 100%; height: 100%;">
+            <img src="E:/CodeMake/HTML/喜迎龙鼓.jpg" alt="喜迎龙鼓" style="
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+            ">
+        </div>
+        <!-- 图片2 -->
+        <div class="slide" style="min-width: 100%; height: 100%;">
+            <img src="E:/CodeMake/HTML/小人雕塑.jpg" alt="小人雕塑" style="
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+            ">
+        </div>
+        <!-- 图片3 -->
+        <div class="slide" style="min-width: 100%; height: 100%;">
+            <img src="E:/CodeMake/HTML/墙绘合照.jpg" alt="墙绘合照" style="
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+            ">
+        </div>
+        <!--图片4-->
+        <div class="slide" style="min-width: 100%; height: 100%;">
+            <img src="E:/CodeMake/HTML/击鼓.jpg" alt="击鼓" style="
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+            ">
+        </div>
+    </div>
+
+    <!-- 左翻页按钮 -->
+    <button id="prev-btn" style="
+        position: absolute;
+        top: 50%;
+        left: 20px;
+        transform: translateY(-50%);
+        background-color: rgba(0,0,0,0.5);
+        color: white;
+        border: none;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        font-size: 24px;
+        cursor: pointer;
+        z-index: 10;
+        transition: background-color 0.3s ease;
+    " onmouseover="this.style.backgroundColor='rgba(0,0,0,0.8)'" onmouseout="this.style.backgroundColor='rgba(0,0,0,0.5)'">
+        &lt;
+    </button>
+
+    <!-- 右翻页按钮 -->
+    <button id="next-btn" style="
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+        background-color: rgba(0,0,0,0.5);
+        color: white;
+        border: none;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        font-size: 24px;
+        cursor: pointer;
+        z-index: 10;
+        transition: background-color 0.3s ease;
+    " onmouseover="this.style.backgroundColor='rgba(0,0,0,0.8)'" onmouseout="this.style.backgroundColor='rgba(0,0,0,0.5)'">
+        &gt;
+    </button>
+
+    <!-- 指示器（显示当前是第几张） -->
+    <div id="indicators" style="
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+        z-index: 10;
+    ">
+        <!-- 指示器会通过JS动态生成 -->
+    </div>
+</div>
+
+<!-- 图片切换功能的JavaScript代码 -->
+<script>
+    // 获取元素
+    const sliderContainer = document.getElementById('slider-container');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const indicatorsContainer = document.getElementById('indicators');
+    const slides = document.querySelectorAll('.slide');
+    
+    // 初始化变量
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+    
+    // 创建指示器
+    function createIndicators() {
+        for (let i = 0; i < totalSlides; i++) {
+            const indicator = document.createElement('button');
+            indicator.style.width = '12px';
+            indicator.style.height = '12px';
+            indicator.style.borderRadius = '50%';
+            indicator.style.border = 'none';
+            indicator.style.backgroundColor = i === currentIndex ? 'white' : 'rgba(255,255,255,0.5)';
+            indicator.style.cursor = 'pointer';
+            indicator.style.transition = 'background-color 0.3s ease';
+            
+            // 点击指示器切换图片
+            indicator.addEventListener('click', () => {
+                currentIndex = i;
+                updateSlider();
+            });
+            
+            indicatorsContainer.appendChild(indicator);
+        }
+    }
+    
+    // 更新滑块显示状态
+    function updateSlider() {
+        // 移动图片容器
+        sliderContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+        
+        // 更新指示器状态
+        const indicators = indicatorsContainer.querySelectorAll('button');
+        indicators.forEach((indicator, index) => {
+            indicator.style.backgroundColor = index === currentIndex ? 'white' : 'rgba(255,255,255,0.5)';
+        });
+    }
+    
+    // 上一张图片
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        updateSlider();
+    }
+    
+    // 下一张图片
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        updateSlider();
+    }
+    
+    // 绑定事件
+    prevBtn.addEventListener('click', prevSlide);
+    nextBtn.addEventListener('click', nextSlide);
+    
+    // 键盘左右键控制
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') prevSlide();
+        if (e.key === 'ArrowRight') nextSlide();
+    });
+    
+    // 初始化
+    createIndicators();
+    updateSlider();
+</script>
+</body>
+</html>
