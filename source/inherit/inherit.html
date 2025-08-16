@@ -117,6 +117,19 @@
         margin-bottom: 20px; /* 图片下方留20px间距，与正文分隔开 */
         margin-top: 10px; /* 图片上方留10px间距，与标题分隔开 */
     }
+    .content-logo {
+    /* 1. 水平居中（核心属性，需配合display:block） */
+        display: block; /* 将图片从“行内元素”转为“块级元素”，才能用margin居中 */
+        margin: 0 auto; /* 上下边距0，左右自动（实现水平居中） */
+        
+        /* 2. 自适应容器宽度（避免图片过大溢出，可选但推荐） */
+        max-width: 100%; /* 图片最大宽度不超过父容器（content-area） */
+        height: auto; /* 保持图片宽高比，避免拉伸变形 */
+        
+        /* 3. 上下间距优化（可选，让图片与文字不拥挤） */
+        margin-bottom: 20px; /* 图片下方留20px间距，与正文分隔开 */
+        margin-top: 10px; /* 图片上方留10px间距，与标题分隔开 */
+    }
     
     @keyframes fadeIn {
         from { opacity: 0; }
@@ -163,7 +176,7 @@
         height: 320px;
         opacity: 1; 
     ">
-        <img src="/QiYuanLongGu/文创设计/冰箱贴/图案-龙（透明）.png" alt="图案-龙" width="120" style="
+        <img src="/QiYuanLongGu/文创设计/冰箱贴/图案-龙（透明）.png" alt="图案-龙" width="120" class="content-logo" style="
             width: 100%;
             height: 100%;
             object-fit: contain;
@@ -336,6 +349,7 @@
 </div>
 </body>
 </html>
+
 
 
 
