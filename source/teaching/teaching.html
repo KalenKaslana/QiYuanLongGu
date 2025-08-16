@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html>
-
-
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -64,18 +62,26 @@
         border-left: 4px solid gold;
     }
     
-    /* 右侧内容区域样式 */
+    /* 右侧内容区域样式 - 核心修复：补充content-section基础隐藏样式 */
     .content-area {
         width: 75%;
         padding: 30px;
         box-sizing: border-box;
+        /* 让内容区域默认垂直居中，提升视觉效果 */
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     
+    /* 关键：默认隐藏所有内容区块 */
     .content-section {
         display: none;
         animation: fadeIn 0.5s ease;
+        /* 确保链接容器占满父区域，方便居中 */
+        width: 100%;
     }
     
+    /* 仅active状态的内容区块显示 */
     .content-section.active {
         display: block;
     }
@@ -91,41 +97,59 @@
         line-height: 1.8;
         font-size: 1.05rem;
     }
-    /* 解决pre标签文字溢出问题：保留格式+自动换行 */
+
+    /* 下载链接样式（放大+居中+美化）- 确保在content-section样式之后加载 */
+    .content-section a {
+        font-size: 2rem; /* 文字放大（32px左右，适配多数屏幕） */
+        font-weight: bold; /* 加粗突出 */
+        display: block; /* 转为块级元素才能居中 */
+        text-align: center; /* 水平居中 */
+        margin: 50px auto; /* 上下50px间距，左右自动居中 */
+        text-decoration: none; /* 清除下划线 */
+        color: #993300; /* 主色调，与页面风格统一 */
+        transition: all 0.3s ease; /* 过渡动画，提升交互感 */
+        padding: 15px 30px; /* 增加内边距，点击区域更大 */
+        border-radius: 8px; /* 轻微圆角，更美观 */
+        background-color: rgba(255,255,255,0.8); /* 半透明白色背景，突出链接 */
+        max-width: 600px; /* 限制最大宽度，避免大屏幕下过宽 */
+    }
+
+    /* 链接悬停状态 */
+    .content-section a:hover {
+        color: gold; /* 悬停变金色，呼应头部导航 */
+        transform: scale(1.1); /* 轻微放大（10%） */
+        text-shadow: 0 0 12px rgba(153, 51, 0, 0.6); /* 加深阴影，更醒目 */
+        background-color: rgba(255,255,255,1); /* 悬停时背景变实 */
+    }
+
+    /* 解决pre标签文字溢出问题 */
     .content-text pre {
-        /* 1. 允许文字自动换行（核心属性） */
-        white-space: pre-wrap; 
-        /* 2. 当单词过长时，强制拆分换行（避免单个长词溢出） */
+        white-space: pre-wrap;
         word-break: break-all;
-        /* 3. 清除默认缩进，继承父容器的内边距（适配你页面的文字间距） */
         margin: 0;
         padding: 0;
-        /* 4. 继承父容器的字体样式，保持页面风格统一 */
-        font-family: inherit; 
+        font-family: inherit;
         font-size: inherit;
-        line-height: inherit; /* 与你.content-text的1.8行高保持一致 */
+        line-height: inherit;
     }
-    /* 图片居中样式：水平居中+自适应宽度+间距优化 */
+
+    /* 图片居中样式 */
     .content-image {
-        /* 1. 水平居中（核心属性，需配合display:block） */
-        display: block; /* 将图片从“行内元素”转为“块级元素”，才能用margin居中 */
-        margin: 0 auto; /* 上下边距0，左右自动（实现水平居中） */
-        
-        /* 2. 自适应容器宽度（避免图片过大溢出，可选但推荐） */
-        max-width: 50%; /* 图片最大宽度不超过父容器（content-area） */
-        height: auto; /* 保持图片宽高比，避免拉伸变形 */
-        
-        /* 3. 上下间距优化（可选，让图片与文字不拥挤） */
-        margin-bottom: 20px; /* 图片下方留20px间距，与正文分隔开 */
-        margin-top: 10px; /* 图片上方留10px间距，与标题分隔开 */
+        display: block;
+        margin: 0 auto;
+        max-width: 50%;
+        height: auto;
+        margin-bottom: 20px;
+        margin-top: 10px;
     }
     
+    /* 淡入动画 */
     @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
+        from { opacity: 0; transform: translateY(10px); } /* 增加轻微下移动画，更自然 */
+        to { opacity: 1; transform: translateY(0); }
     }
     
-    /* 响应式调整 */
+    /* 响应式调整 - 适配手机等小屏幕 */
     @media (max-width: 768px) {
         .content-container {
             flex-direction: column;
@@ -139,11 +163,25 @@
             border-right: none;
             border-bottom: 2px solid #cc9966;
         }
+        
+        /* 小屏幕下链接文字缩小，避免溢出 */
+        .content-section a {
+            font-size: 1.5rem;
+            padding: 12px 20px;
+        }
+
+        /* 头部导航适配小屏幕 */
+        #header .content-section a {
+            font-size: 1.2rem;
+            padding: 0.3rem 0.5rem;
+        }
+
+        #header h1 {
+            font-size: 1.8rem;
+        }
     }
 </style>
 </head>
-
-
 <body style="margin: 0; padding: 0; min-height: 100vh; display: flex; flex-direction: column;">
     <!--头部方形栏-->
     <div id="header" style="
@@ -154,18 +192,18 @@
         position: relative;
         overflow: hidden;
     ">
-        <!--LOGO图片-->
+        <!--LOGO图片 - 修复大小溢出问题 -->
         <div style="
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 1;
-            width: 320px;
-            height: 320px;
+            width: 120px; /* 原320px过大，改为120px适配头部高度 */
+            height: 120px;
             opacity: 1; 
         ">
-            <img src="https://picsum.photos/id/1015/320/320" alt="龙图案标志" width="120" style="
+            <img src="/QiYuanLongGu/文创设计/冰箱贴/图案-龙（透明）.png" alt="图案-龙" style="
                 width: 100%;
                 height: 100%;
                 object-fit: contain;
@@ -179,11 +217,11 @@
             display: flex;
             justify-content: space-around;
             align-items: center;
-            width: 90%;
+            width: 95%;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 1rem;
         ">
-        <a href="#" style="
+        <a href="/QiYuanLongGu/source/inherit/inherit.html" style="
             color: gold;
             text-decoration: none;
             font-size: 1.5rem;
@@ -195,7 +233,7 @@
         >传承渊源
         </a>
     
-        <a href="#" style="
+        <a href="/QiYuanLongGu/source/teaching/teaching.html" style="
             color: gold;
             text-decoration: none;
             font-size: 1.5rem;
@@ -208,7 +246,7 @@
         </a>
         
         <!--中央标题-->
-        <a href="#" style="text-decoration: none;">
+        <a href="/QiYuanLongGu/index.html" style="text-decoration: none;">
             <h1 style="
                 text-align: center;
                 margin: 0;
@@ -258,12 +296,46 @@
                 <li><a href="#second" class="menu-link" data-target="unit-two">第二单元</a></li>
             </ul>
         </div>
-        <!-- 右侧侧内容区域 -->
+        <!-- 右侧侧内容区域 - 确认仅第一单元有active -->
         <div class="content-area">
             <div id="unit-one" class="content-section active">
                 <a href="/QiYuanLongGu/龙鼓教材/龙鼓舞乐-第一单元.pptx" download>龙鼓舞乐-第一单元</a>
             </div>
-            <div id="unit-two" class="content-section active">
+            <div id="unit-two" class="content-section">
                 <a href="/QiYuanLongGu/龙鼓教材/龙鼓舞乐-第二单元.pptx" download>龙鼓舞乐-第二单元</a>
             </div>
         </div>
+    </div>
+
+    <script>
+        // 实现目录切换功能 - 保留原逻辑并优化稳定性
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuLinks = document.querySelectorAll('.menu-link');
+            const contentSections = document.querySelectorAll('.content-section');
+            
+            // 初始化检查：确保仅第一单元激活（双重保险）
+            menuLinks.forEach(link => link.classList.remove('active'));
+            contentSections.forEach(section => section.classList.remove('active'));
+            document.querySelector('.menu-link[data-target="unit-one"]').classList.add('active');
+            document.getElementById('unit-one').classList.add('active');
+            
+            // 目录点击切换
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // 移除所有活动状态
+                    menuLinks.forEach(l => l.classList.remove('active'));
+                    contentSections.forEach(s => s.classList.remove('active'));
+                    
+                    // 添加当前活动状态
+                    this.classList.add('active');
+                    const targetId = this.getAttribute('data-target');
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) targetSection.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
