@@ -34,7 +34,7 @@
         height: 320px;
         opacity: 1; 
     ">
-        <img src="/文创设计/冰箱贴/图案-龙（透明）.png" alt="图案-龙" width="120px" style="
+        <img src="文创设计/冰箱贴/图案-龙（透明）.png" alt="图案-龙" width="120px" style="
             width: 100%;
             height: 100%;
             object-fit: contain;
@@ -52,7 +52,7 @@
         margin: 0 auto;
         padding: 0 2rem;
     ">
-    <a href="/source/inherit/inherit.html" style="
+    <a href="source/inherit/inherit.html" style="
         color: gold;
         text-decoration: none;
         font-size: 1.5rem;
@@ -64,7 +64,7 @@
     >传承渊源
     </a>
 
-    <a href="/source/teaching/teaching.html" style="
+    <a href="source/teaching/teaching.html" style="
         color: gold;
         text-decoration: none;
         font-size: 1.5rem;
@@ -75,9 +75,9 @@
         onmouseover="this.style.transform='scale(1.3)'; this.style.textShadow='0 0 10px gold'" onmouseout="this.style.transform='scale(1)'; this.style.textShadow='none'"
     >龙鼓舞乐
     </a>
-    
+
     <!--中央标题文字-->
-    <a href="/index.html" style="text-decoration: none;">
+    <a href="index.html" style="text-decoration: none;">
         <h1 style="
             text-align: center;
             margin: 0;
@@ -91,7 +91,7 @@
         </h1>
     </a>
 
-    <a href="/source/design/design.html" style="
+    <a href="source/design/design.html" style="
         color: gold;
         text-decoration: none;
         font-size: 1.5rem;
@@ -103,7 +103,7 @@
     >文创周边
     </a>
 
-    <a href="/source/more/more.html" style="
+    <a href="source/more/more.html" style="
         color: gold;
         text-decoration: none;
         font-size: 1.5rem;
@@ -135,7 +135,7 @@
     ">
         <!-- 图片1 -->
         <div class="slide" style="min-width: 100%; height: 100%;">
-            <img src="/文创设计/墙绘/喜迎龙鼓.jpg" alt="喜迎龙鼓" style="
+            <img src="文创设计/墙绘/喜迎龙鼓.jpg" alt="喜迎龙鼓" style="
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
@@ -144,7 +144,7 @@
         </div>
         <!-- 图片2 -->
         <div class="slide" style="min-width: 100%; height: 100%;">
-            <img src="/活动记录/小人雕塑.jpg" alt="小人雕塑" style="
+            <img src="活动记录/小人雕塑.jpg" alt="小人雕塑" style="
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
@@ -153,7 +153,7 @@
         </div>
         <!-- 图片3 -->
         <div class="slide" style="min-width: 100%; height: 100%;">
-            <img src="/活动记录/墙绘合照.jpg" alt="墙绘合照" style="
+            <img src="活动记录/墙绘合照.jpg" alt="墙绘合照" style="
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
@@ -162,7 +162,7 @@
         </div>
         <!--图片4-->
         <div class="slide" style="min-width: 100%; height: 100%;">
-            <img src="/活动记录/击鼓.jpg" alt="击鼓" style="
+            <img src="活动记录/击鼓.jpg" alt="击鼓" style="
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
@@ -233,11 +233,11 @@
     const nextBtn = document.getElementById('next-btn');
     const indicatorsContainer = document.getElementById('indicators');
     const slides = document.querySelectorAll('.slide');
-    
+
     // 初始化变量
     let currentIndex = 0;
     const totalSlides = slides.length;
-    
+
     // 创建指示器
     function createIndicators() {
         for (let i = 0; i < totalSlides; i++) {
@@ -249,51 +249,51 @@
             indicator.style.backgroundColor = i === currentIndex ? 'white' : 'rgba(255,255,255,0.5)';
             indicator.style.cursor = 'pointer';
             indicator.style.transition = 'background-color 0.3s ease';
-            
+
             // 点击指示器切换图片
             indicator.addEventListener('click', () => {
                 currentIndex = i;
                 updateSlider();
             });
-            
+
             indicatorsContainer.appendChild(indicator);
         }
     }
-    
+
     // 更新滑块显示状态
     function updateSlider() {
         // 移动图片容器
         sliderContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-        
+
         // 更新指示器状态
         const indicators = indicatorsContainer.querySelectorAll('button');
         indicators.forEach((indicator, index) => {
             indicator.style.backgroundColor = index === currentIndex ? 'white' : 'rgba(255,255,255,0.5)';
         });
     }
-    
+
     // 上一张图片
     function prevSlide() {
         currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
         updateSlider();
     }
-    
+
     // 下一张图片
     function nextSlide() {
         currentIndex = (currentIndex + 1) % totalSlides;
         updateSlider();
     }
-    
+
     // 绑定事件
     prevBtn.addEventListener('click', prevSlide);
     nextBtn.addEventListener('click', nextSlide);
-    
+
     // 键盘左右键控制
     document.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowLeft') prevSlide();
         if (e.key === 'ArrowRight') nextSlide();
     });
-    
+
     // 初始化
     createIndicators();
     updateSlider();
@@ -314,8 +314,3 @@
 </body>
 
 </html>
-
-
-
-
-
